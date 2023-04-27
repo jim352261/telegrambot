@@ -20,7 +20,7 @@ func start(c *cli.Context) {
 
 	//初始化
 	// ms.drawInit(masterSQLDriver, slaveSQLDriver)
-	bot, err := tgbotapi.NewBotAPI("MyAwesomeBotToken")
+	bot, err := tgbotapi.NewBotAPI(config.TelegramToken)
 	if err != nil {
 		log.Fatal(err)
 	}

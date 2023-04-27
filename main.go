@@ -80,11 +80,8 @@ type luciferConfig struct {
 	// ReadyPath      string
 	// HealthPort     string
 
-	TelegramBool       bool
-	TelegramToken      string
-	TelegramChatIDInfo string
-	TelegramChatIDWarn string
-	TelegramAddress    string
+	TelegramBool  bool
+	TelegramToken string
 }
 
 func envInit(c *cli.Context) (err error) {
@@ -348,27 +345,6 @@ func envInit(c *cli.Context) (err error) {
 		config.TelegramBool = true
 	} else {
 		config.TelegramBool = false
-	}
-
-	config.TelegramAddress = os.Getenv("TELEGRAM_ADDRESS")
-	if config.TelegramAddress == "" {
-		logger.Info("env TelegramAddress empty", nil)
-		err = errors.New("env TelegramAddress empty")
-		return
-	}
-
-	config.TelegramChatIDInfo = os.Getenv("TELEGRAM_CHATID")
-	if config.TelegramChatIDInfo == "" {
-		logger.Info("env TelegramChatIDInfo empty", nil)
-		err = errors.New("env TelegramChatIDInfo empty")
-		return
-	}
-
-	config.TelegramChatIDWarn = os.Getenv("TELEGRAM_CHATID_WARN")
-	if config.TelegramChatIDWarn == "" {
-		logger.Info("env TelegramChatIDWarn empty", nil)
-		err = errors.New("env TelegramChatIDWarn empty")
-		return
 	}
 
 	config.TelegramToken = os.Getenv("TELEGRAM_TOKEN")
